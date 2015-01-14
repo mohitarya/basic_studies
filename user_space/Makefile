@@ -1,22 +1,25 @@
 #Makefile to compile all the targets or single target
-STATICLIBPATH = static_lib/
-DYNAMICLIBPATH = dynamic_lib/
-SOURCE = source/
+STATICLIBPATH = ./library/static_lib/
+DYNAMICLIBPATH = ./library/dynamic_lib/
+STAT_DYN_LIB_PATH = ./library/ 
+STATICTARGET = staticlib
+DYNAMICTARGET = dynamiclib
+STAT_DYN_TARGET = all_lib_build
 CD = cd
-TARG = staticlib dynamiclib lib_prog
+TARG = $(STATICTARGE) $((DYNAMICTARGET) $(STAT_DYN_TARGET)
 
 all: $(TARG)
 
-staticlib: 
+$(STATICTARGET): 
 	$(CD) $(STATICLIBPATH); make
 
-dynamiclib:
+$(DYNAMICTARGET):
 	$(CD) $(DYNAMICLIBPATH); make
 
-lib_prog:
-	$(CD) $(SOURCE); make
+$(STAT_DYN_TARGET):
+	$(CD) $(STAT_DYN_LIB_PATH); make
 
 clean:
 	$(CD) $(STATICLIBPATH); make clean
 	$(CD) $(DYNAMICLIBPATH); make clean
-	$(CD) $(SOURCE); make clean
+	$(CD) $(STAT_DYN_LIB_PATH); make clean

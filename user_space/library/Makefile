@@ -1,7 +1,7 @@
 #Makefile to compile all the targets or single target
 STATICLIBPATH = ./static_lib/
 DYNAMICLIBPATH = ./dynamic_lib/
-MULTIDIRLIB = ./multidir_lib/source/
+MULTIDIRLIBPATH = ./multidir_lib/source/
 STATICTAGET = staticlib
 DYNAMICTARGET = dynamiclib
 MULTILIBTARGET = multilib
@@ -17,9 +17,9 @@ $(DYNAMICTARGET):
 	$(CD) $(DYNAMICLIBPATH); make
 
 $(MULTILIBTARGET):
-	$(CD) $(SOURCE); make
+	$(CD) $(MULTIDIRLIBPATH); make
 
 clean:
 	$(CD) $(STATICLIBPATH); make clean
 	$(CD) $(DYNAMICLIBPATH); make clean
-	$(CD) $(SOURCE); make clean
+	$(CD) $(MULTIDIRLIBPATH); make clean
