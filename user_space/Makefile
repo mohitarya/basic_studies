@@ -9,8 +9,9 @@ SEMAPHOREPATH = semaphore/
 SIGNALPATH = signals/
 THREADPATH = threads/
 SOCKETPATH = socket/
+SHAREDMEMPATH = sharedmemory/
 CD = cd
-TARG = staticlib dynamiclib all_lib_build buildfork buildmutex buildpipe buildsemaphore buildsignal buildthreads buildsocket 
+TARG = staticlib dynamiclib all_lib_build buildfork buildmutex buildpipe buildsemaphore buildsignal buildthreads buildsocket sharedmem 
 
 all: $(TARG)
 
@@ -44,6 +45,9 @@ buildthreads:
 buildsocket:
 	make -C $(PWD)/$(SOCKETPATH)
 
+sharedmem:
+	make -C $(PWD)/$(SHAREDMEMPATH)
+
 clean:
 	make -C $(PWD)/$(STATICLIBPATH) clean
 	make -C $(PWD)/$(DYNAMICLIBPATH) clean
@@ -55,3 +59,4 @@ clean:
 	make -C $(PWD)/$(SIGNALPATH) clean
 	make -C $(PWD)/$(THREADPATH) clean
 	make -C $(PWD)/$(SOCKETPATH) clean
+	make -C $(PWD)/$(SHAREDMEMPATH) clean
