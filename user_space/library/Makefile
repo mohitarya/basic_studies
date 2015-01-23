@@ -1,25 +1,22 @@
 #Makefile to compile all the targets or single target
-STATICLIBPATH = ./static_lib/
-DYNAMICLIBPATH = ./dynamic_lib/
-MULTIDIRLIBPATH = ./multidir_lib/source/
-STATICTAGET = staticlib
-DYNAMICTARGET = dynamiclib
-MULTILIBTARGET = multilib
-CD = cd
-TARG = $(STATICTAGET) $(DYNAMICTARGET) $(MULTILIBTARGET)
+STATICLIBPATH = static_lib/
+DYNAMICLIBPATH = dynamic_lib/
+MULTIDIRLIBPATH = multidir_lib/source/
+
+TARG = staticlib dynamiclib multilib 
 
 all: $(TARG)
 
-$(STATICTAGET): 
-	$(CD) $(STATICLIBPATH); make
+staticlib: 
+	make -C $(PWD)/$(STATICLIBPATH)
 
-$(DYNAMICTARGET):
-	$(CD) $(DYNAMICLIBPATH); make
+dynamiclib:
+	make -C $(PWD)/$(DYNAMICLIBPATH)
 
-$(MULTILIBTARGET):
-	$(CD) $(MULTIDIRLIBPATH); make
+multilib:
+	make -C $(PWD)/$(MULTIDIRLIBPATH)
 
 clean:
-	$(CD) $(STATICLIBPATH); make clean
-	$(CD) $(DYNAMICLIBPATH); make clean
-	$(CD) $(MULTIDIRLIBPATH); make clean
+	make -C $(PWD)/$(STATICLIBPATH) clean
+	make -C $(PWD)/$(DYNAMICLIBPATH) clean
+	make -C $(PWD)/$(MULTIDIRLIBPATH) clean
