@@ -10,8 +10,9 @@ SIGNALPATH = signals/
 THREADPATH = threads/
 SOCKETPATH = socket/
 SHAREDMEMPATH = sharedmemory/
+MSGQUEPATH = msgqueue/
 CD = cd
-TARG = staticlib dynamiclib all_lib_build buildfork buildmutex buildpipe buildsemaphore buildsignal buildthreads buildsocket sharedmem 
+TARG = staticlib dynamiclib all_lib_build buildfork buildmutex buildpipe buildsemaphore buildsignal buildthreads buildsocket sharedmem buildmsgque 
 
 all: $(TARG)
 
@@ -48,6 +49,8 @@ buildsocket:
 sharedmem:
 	make -C $(PWD)/$(SHAREDMEMPATH)
 
+buildmsgque:
+	make -C $(PWD)/$(MSGQUEPATH)
 clean:
 	make -C $(PWD)/$(STATICLIBPATH) clean
 	make -C $(PWD)/$(DYNAMICLIBPATH) clean
@@ -60,3 +63,4 @@ clean:
 	make -C $(PWD)/$(THREADPATH) clean
 	make -C $(PWD)/$(SOCKETPATH) clean
 	make -C $(PWD)/$(SHAREDMEMPATH) clean
+	make -C $(PWD)/$(MSGQUEPATH) clean
